@@ -1,0 +1,4 @@
+interface:
+  display_name: "tldw.sh"
+  short_description: "Analyze media with your instructions through tldw.sh"
+  default_prompt: "Use $tldw to analyze this media with source citations."
