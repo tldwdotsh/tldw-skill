@@ -1,53 +1,50 @@
 {
   "schema_version": 1,
   "name": "tldw-skill",
-  "version": "0.2.0",
-  "exported_at": "2026-11-07T06:40:29.855719+00:00",
+  "version": "0.2.1",
+  "exported_at": "2026-11-07T08:36:18.510324+00:00",
   "repository": "https://github.com/tldwdotsh/tldw-skill",
   "repository_private": true,
   "canonical_repository": "https://github.com/tldwdotsh/tldw",
   "canonical_directory": "packages/agent-skill/tldw",
-  "canonical_source_commit": "744d8bc98d5b15d24dd902bf34e3904351416d1d",
-  "canonical_source_kind": "reviewed_working_tree_snapshot",
-  "canonical_source_snapshot_sha256": "8c950e6aaeacb5d4ca6f500f4e6da52569096308b39ad65f94c3ebd36263ce7f",
+  "canonical_source_commit": "c7bb67da31f3ba81f2e5c2ef3a901f65176f16c0",
+  "canonical_source_kind": "verified_canonical_commit",
+  "canonical_source_snapshot_sha256": "bdcc223ca5e5d0588d8904f0d27cce4841da9b8b4caf13bf0fd26a996a83e8dd",
   "canonical_files": {
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "SKILL.md": "b8560447c128888ddfea47dec40bf2863df35e6333a37350661eb04bfd44de48",
+    "SKILL.md": "05561d2221221ffb65ec784e5a4b9ee60f0dd2bdc16d764df107cefa428f6084",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/source-limits.md": "e36b5ac715ca71e1502c54b2249e7b98ee36e2bd15c1566a0d1d7b0b81c5d5e8",
+    "references/source-limits.md": "72f02c427f534c80cdce833e4b698a9121f14f814c9df745ff9af89c63dc0e61",
     "references/workflows.md": "93fcebf2000b237d556e593d27e8eb4ff2e0038a7e4284982f4cf3988e9fae90"
   },
-  "export_snapshot_sha256": "bbc19b3ca88bef89bd952c61b38fb81c2574fd7f5d4e4e95dc610bb27fa9cfca",
+  "export_snapshot_sha256": "436cf6428f17ce7210a4f0850a8466d849a1f018099c6971092b48993f1925de",
   "export_files": {
     ".github/workflows/validate.yml": "5443d9bbffed1756e9513fd20bd9b91d685563ed73451f5f3c7ffe39c9e843f2",
     ".gitignore": "2682bd7572b68987632de8f3e52a5993dc1f5732e87d64c6582bd7a8b0184b7f",
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "README.md": "50a1d2e43de9549fff65549d7bf3fc5429abd7722e3ca840ecb65dd5f55542e3",
-    "SKILL.md": "b8560447c128888ddfea47dec40bf2863df35e6333a37350661eb04bfd44de48",
+    "README.md": "fe9e55b4e7c4278eaba12159ce17b1d255016cb69eadf378d84b73b7cd4dbf3a",
+    "SKILL.md": "05561d2221221ffb65ec784e5a4b9ee60f0dd2bdc16d764df107cefa428f6084",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/source-limits.md": "e36b5ac715ca71e1502c54b2249e7b98ee36e2bd15c1566a0d1d7b0b81c5d5e8",
+    "references/source-limits.md": "72f02c427f534c80cdce833e4b698a9121f14f814c9df745ff9af89c63dc0e61",
     "references/workflows.md": "93fcebf2000b237d556e593d27e8eb4ff2e0038a7e4284982f4cf3988e9fae90",
     "scripts/__init__.py": "6fd113b2273ac3edb019fc4eac189e19d84994cc77486eda0b5396b77715ad5a",
     "scripts/build.py": "b8b5321c6de64fe7fe54e449c72deabf49d0119cdb0e9cee08533ed1742f2265",
-    "scripts/validate.py": "cb17d4fc90862cda91753ffb81b6ef5b5af4dcf20074a5c67e1636f3afddaaf7",
-    "skill.json": "f27ea3fa10d5d27c94305b5aeb31086c37ce1de641755aaaba9ed10a8bd8eed3",
+    "scripts/validate.py": "46c53bf94673a146609bed492bc85670e4fd69c7cb807c7788688c5360bb5a53",
+    "skill.json": "cc4188a0ae258fb9b77769dbc75f56126e013a5ca94aed4952041a3f19859684",
     "tests/test_skill.py": "7ca3241f7dfd77b467520975c11e3629c8b9051615af84674312a3a1f81db2f7"
   },
   "hash_definition": "SHA-256 of UTF-8 canonical JSON mapping relative POSIX filenames to file SHA-256, sorted keys, separators comma/colon. Export excludes this manifest, .git, dependencies, caches and build outputs.",
   "local_validation": {
-    "python_versions_tested": [
-      "3.12.15",
-      "3.15.0"
-    ],
+    "tests_are_offline_fixture_only": true,
+    "canonical_commit_pending_root_verification": false,
     "unit_tests_passed": 5,
     "resource_hash_validation_passed": true,
-    "local_references_validated": true,
     "deterministic_archive_passed": true
   },
   "local_artifacts": {
-    "tldw-skill-0.2.0.zip": {
-      "sha256": "2508d3358fbd50a20dae3efcc709581fd23cc35f86d93bb5c692a02f0705c22e",
-      "bytes": 6045
+    "tldw-skill-0.2.1.zip": {
+      "sha256": "71b31387f47f9cb204aefea9fa6dc776158cd712f9a32a88648bf38be041bbda",
+      "bytes": 6566
     }
   },
   "registry_published": false,

@@ -27,7 +27,7 @@ No external dependencies, monorepo checkout, model key or network request is
 required. The validator checks the identity/version, the five-resource allowlist,
 SHA-256 hashes, local Markdown links, JSON examples, and agent-interface metadata.
 Tests cover deterministic packaging and reject changed, missing and symlinked
-resources. The builder writes `dist/tldw-skill-0.2.0.zip` and its checksum manifest.
+resources. The builder writes `dist/tldw-skill-0.2.1.zip` and its checksum manifest.
 CI performs only these validations, with read-only repository permissions and no
 registry credentials, publication, deployment or inference.
 
@@ -48,8 +48,9 @@ verification, paste tokens into chat, or give an agent operator credentials.
 
 The skill preserves custom instructions, durable job receipts and exact
 idempotent retries. Default caption/text processing uses 1 credit/minute; fresh
-transcription costs 3 and needs an eligible paid plan, explicit permission and a
-credit ceiling. Free monthly credits do not enable fresh transcription, and
+transcription costs 3 and needs server-authorized access and explicit permission.
+Ordinary paid accounts must supply a ceiling; authenticated server-confirmed
+exempt accounts may omit it. Resource and provider safety limits still apply. Free monthly credits do not enable fresh transcription, and
 purchased credits never silently authorize it. Read the live service policy and
 account usage before processing.
 

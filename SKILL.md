@@ -3,7 +3,7 @@ name: tldw
 description: Analyze supplied video links or source text with custom instructions through tldw.sh, then retrieve a cited result. Use for YouTube/TikTok summaries, public X posts, complete supplied thread text and comparisons of supplied TikTok clips.
 license: MIT
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # tldw.sh
@@ -69,14 +69,14 @@ sample; do not claim platform-wide trends, popularity, engagement or unseen visu
 Read live allowances at the deployment's `/pricing.md` and account-specific usage
 through `account_usage` / `GET /v1/me` with `account:read`. Free includes 500
 monthly caption/text credits. Hobby is USD20/month with 1,000 credits; Pro is
-USD100/month with 5,000. Included allowance is used first, then non-expiring
+USD99/month with 5,000. Included allowance is used first, then non-expiring
 purchased credits. Each completed comparison clip is billed separately.
 
 Default `transcription="never"` uses captions/text or existing cached transcripts
 at 1 credit per source minute. Fresh ASR costs 3 credits per minute and requires
-an eligible paid plan plus explicit `transcription="if_needed"`; obtain the
+an eligible paid plan or server-confirmed billing exemption, plus explicit `transcription="if_needed"`; obtain the
 user's spending authorization before enabling it. An explicit `max_credits` is
-required with `if_needed`; use it for a job
+required for ordinary paid accounts with `if_needed`; use it for a job
 ceiling. For comparisons it is an aggregate fixed-share ceiling across distinct
 clips; unused shares are not redistributed. Do not silently enable fallback when
 a caption-only request fails. Inspect the job's `credits` estimate, reservation
@@ -87,3 +87,6 @@ Use the deployment's `/docs/errors.json` for machine-readable recovery guidance.
 Billing, sharing, account changes or contacting support are separate actions and
 are not implied by a request to analyze a source. Do not spend beyond the user's
 requested work or silently buy credits.
+
+
+Server-confirmed billing exemption: the authenticated server decides whether an account is exempt. Exempt accounts may omit a credit ceiling and do not incur customer-credit charges; explicit transcription permission and resource/provider limits still apply. Ordinary paid accounts allowing fresh transcription must supply a ceiling or receive `MAX_CREDITS_EXCEEDED` (HTTP 422). Clients validate supplied values, then pass requests through without fetching extra account scopes or inferring privileges from names, roles, or key prefixes.

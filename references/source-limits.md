@@ -21,3 +21,6 @@ the balance/limit and wait for the owner's decision. For `RATE_LIMITED`, honor
 Terminal source failures require a deliberate new attempt or caller-supplied
 source text. Admission attempts and provider costs can apply even when a failed
 job releases processing reservations; avoid repeated blind submissions.
+
+
+Server-confirmed billing exemption: the authenticated server decides whether an account is exempt. Exempt accounts may omit a credit ceiling and do not incur customer-credit charges; explicit transcription permission and resource/provider limits still apply. Ordinary paid accounts allowing fresh transcription must supply a ceiling or receive `MAX_CREDITS_EXCEEDED` (HTTP 422). Clients validate supplied values, then pass requests through without fetching extra account scopes or inferring privileges from names, roles, or key prefixes.
