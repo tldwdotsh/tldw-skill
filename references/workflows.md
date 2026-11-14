@@ -7,34 +7,15 @@ or PyPI `tldw-client`. As a fallback, `/agents` links versioned downloads with a
 SHA-256 checksum for each file; install those only after the checksum matches.
 Never install a similarly named package.
 
-## Transcript-only extraction
+## Summary and original transcript
 
-To retrieve original captions or text without generated analysis or an LLM call,
-send this to MCP `extract_transcript` or REST `POST /v1/transcripts`:
-
-```json
-{
-  "media": "https://www.youtube.com/watch?v=VIDEO_ID",
-  "transcription": "never",
-  "max_credits": 30
-}
-```
-
-Use a stable idempotency key (MCP `idempotency_key`, REST `Idempotency-Key`).
-The asynchronous receipt has `output_mode: "transcript"` and a durable `job_id`.
-Poll `get_job` / `wait_job` until completed, then call `get_saved_transcript`
-with the returned `transcript_id`, `offset=0`, `limit=100`; follow `next_offset`.
-REST source pages use `GET /v1/transcripts/ID/page`. The completed job has no
-summary. Transcript `wait_job` returns metadata and source pointers with
-`result: null`; retrieve content through the bounded source tool. Neither submission interface accepts analysis instructions or an
-inline wait argument. Submission needs `jobs:write`, polling `jobs:read`, and
-source reads `summaries:read`.
-
-SDKs expose `submitTranscript` / `submit_transcript`; convenience
-`extractTranscript` / `extract_transcript` also wait and read the source. CLI:
-`tldw extract --media URL_OR_TEXT` or `--file PATH`; `tldw wait JOB_ID` resumes.
-New jobs retain normal processing credit rates and ASR consent/caps. Existing
-saved IDs should be read directly; those reads start no job and charge no credits.
+Submit one link through MCP `analyze_media` or REST `POST /v1/analyses`.
+Save the accepted `job_id` and poll `get_job` / `wait_job` until completed.
+The same job saves a summary and its original transcript. Read them using
+`get_summary` and `get_transcript` with the same `summary_id`, or REST
+`GET /v1/summaries/{summary_id}` and `GET /v1/summaries/{summary_id}/transcript`.
+Reading saved results creates no job, model call or processing charge.
+Use `list_transcripts` and `get_saved_transcript` for saved-source pagination.
 
 ## MCP
 
