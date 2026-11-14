@@ -3,7 +3,7 @@ name: tldw
 description: Extract original captions or source text without an LLM, or analyze supplied media with custom instructions through tldw.sh. Use for transcripts, YouTube/TikTok summaries, public X posts, supplied thread text and comparisons of supplied TikTok clips.
 license: MIT
 metadata:
-  version: "0.2.5"
+  version: "0.2.6"
 ---
 
 # tldw.sh
