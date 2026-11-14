@@ -9,8 +9,8 @@
   captions fail instead of silently analyzing the tweet text. Complete thread/article retrieval is
   deployment-dependent; use full supplied text when content is missing. A title,
   preview or one tweet is not a complete article or thread.
-- TikTok comparison is analysis of supplied clips. It does not discover all
-  current platform trends or obtain view counts, audience metrics or comments.
+- Analysis covers only the sources supplied. It does not discover platform
+  trends or obtain view counts, audience metrics or comments.
 - Private, removed, age-restricted or platform-blocked content can fail. Do not
   bypass access controls, invent a transcript or present unavailable content as read.
 

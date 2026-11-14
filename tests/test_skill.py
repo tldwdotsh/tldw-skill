@@ -68,11 +68,11 @@ class SkillTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "reference"):
                 validate(clone)
 
-    def test_unverified_registry_install_guidance_is_rejected_even_with_updated_hash(self):
+    def test_lookalike_registry_install_guidance_is_rejected_even_with_updated_hash(self):
         for wording in (
-            "Run npm install @tldw/client first.",
-            "Use npx @tldw/client init.",
-            "python -m pip install tldw-client",
+            "Run npm install @tldw/clients first.",
+            "Use npx --yes @tldw/client init.",
+            "python -m pip install tldw",
             "Confirm availability in the user's configured registry.",
         ):
             with tempfile.TemporaryDirectory() as directory:

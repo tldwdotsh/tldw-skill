@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "name": "tldw",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "entry": "SKILL.md",
   "license": "MIT",
   "repository": "https://github.com/tldwdotsh/tldw-skill",
   "repository_private": true,
   "files": {
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "SKILL.md": "1190cc414f40e9f3a5cef8db282252f4fecca16e23c24f376dc2baf25a4d04e6",
+    "SKILL.md": "aa3fd30921d725ce16126e7e5761f6ad0e87a40a192f18777b636ac711bd35fa",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/source-limits.md": "6cf79c2d31072499f9fe5658b05aaf7ff5f308004dff5fb6c21aa381a0bb844d",
-    "references/workflows.md": "814671dcf691d2d6fd481a1f910d1b1fefa5aae6061dc6bb841bf05929b9fced"
+    "references/source-limits.md": "99c73b92f6ed1457723ded283250f7500a8580061a4c1892fbed6f94ffcf2efc",
+    "references/workflows.md": "2bd9cb0b35d8df82d4518c373a81b45ce4d390b91cb45b058776ed43d7a6345a"
   }
 }

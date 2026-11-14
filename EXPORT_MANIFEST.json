@@ -1,37 +1,37 @@
 {
   "schema_version": 1,
   "name": "tldw-skill",
-  "version": "0.2.6",
-  "exported_at": "2026-11-14T04:30:37.216164+00:00",
+  "version": "0.2.7",
+  "exported_at": "2026-11-14T17:50:49.528988+00:00",
   "repository": "https://github.com/tldwdotsh/tldw-skill",
   "repository_private": true,
   "canonical_repository": "https://github.com/tldwdotsh/tldw",
   "canonical_directory": "packages/agent-skill/tldw",
-  "canonical_source_commit": "bbae9068c981573e8a391b17b57c16d8663ce81a",
+  "canonical_source_commit": "0f0c93f66be3af4a7b4bd1b112c70fca52d2f86c",
   "canonical_source_kind": "verified_canonical_commit",
-  "canonical_source_snapshot_sha256": "159e2f08795f6f39ca4f9a006680f92f6550f46563ad2801f802fd51284be552",
+  "canonical_source_snapshot_sha256": "2da8d7df128fae955c465ca0ffd4a114cbedb55e7c42aef6025972a3c5b88538",
   "canonical_files": {
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "SKILL.md": "1190cc414f40e9f3a5cef8db282252f4fecca16e23c24f376dc2baf25a4d04e6",
+    "SKILL.md": "aa3fd30921d725ce16126e7e5761f6ad0e87a40a192f18777b636ac711bd35fa",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/source-limits.md": "6cf79c2d31072499f9fe5658b05aaf7ff5f308004dff5fb6c21aa381a0bb844d",
-    "references/workflows.md": "814671dcf691d2d6fd481a1f910d1b1fefa5aae6061dc6bb841bf05929b9fced"
+    "references/source-limits.md": "99c73b92f6ed1457723ded283250f7500a8580061a4c1892fbed6f94ffcf2efc",
+    "references/workflows.md": "2bd9cb0b35d8df82d4518c373a81b45ce4d390b91cb45b058776ed43d7a6345a"
   },
-  "export_snapshot_sha256": "df992f6e18747d69640d4f6468b603d700b8d0582e5b65b7f61cd7f8282005e8",
+  "export_snapshot_sha256": "dae54551b10857ee6732563b45b9c35542818a0cd8a66d58dab3eb3ffb95b320",
   "export_files": {
     ".github/workflows/validate.yml": "adcb1c92d426bcc20ffa6e200942d35136b7f133dfff9c2086b4e45ef05423f1",
     ".gitignore": "2682bd7572b68987632de8f3e52a5993dc1f5732e87d64c6582bd7a8b0184b7f",
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "README.md": "9cf523b5b0a1a21237791e8fa5cc299e9077f264a23df4838b2e5798c10baea1",
-    "SKILL.md": "1190cc414f40e9f3a5cef8db282252f4fecca16e23c24f376dc2baf25a4d04e6",
+    "README.md": "7e9219da97ae98d2f169e87ed24a2c09d723cf0242dc6d9ab4f6a42b9abbfa70",
+    "SKILL.md": "aa3fd30921d725ce16126e7e5761f6ad0e87a40a192f18777b636ac711bd35fa",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/source-limits.md": "6cf79c2d31072499f9fe5658b05aaf7ff5f308004dff5fb6c21aa381a0bb844d",
-    "references/workflows.md": "814671dcf691d2d6fd481a1f910d1b1fefa5aae6061dc6bb841bf05929b9fced",
+    "references/source-limits.md": "99c73b92f6ed1457723ded283250f7500a8580061a4c1892fbed6f94ffcf2efc",
+    "references/workflows.md": "2bd9cb0b35d8df82d4518c373a81b45ce4d390b91cb45b058776ed43d7a6345a",
     "scripts/__init__.py": "6fd113b2273ac3edb019fc4eac189e19d84994cc77486eda0b5396b77715ad5a",
     "scripts/build.py": "b8b5321c6de64fe7fe54e449c72deabf49d0119cdb0e9cee08533ed1742f2265",
-    "scripts/validate.py": "718bad285fc387204ab3a154f85eb0e0901d77928400aa679e06a9f8f107c372",
-    "skill.json": "e8199990988589b04b920f15c2c5002484ad31f39c42ad7ed11b172112025a0c",
-    "tests/test_skill.py": "b935bdb894fdca6ddd4d5912f4928e7292d04a00d83ba15b10c5a7df0d2b5630"
+    "scripts/validate.py": "65a01763f956558a5b51b04e03a96e500b4647bfa5982a85b8ef3432a158830c",
+    "skill.json": "2e6fd84600de5564b25c88e5a78486c5cf28fb3c0941a144a8efc482c9b22cc7",
+    "tests/test_skill.py": "f1e7199ac3da7cd2e1cde56887bae80f72e27ddbef50e3b3a905f2046e5ce456"
   },
   "hash_definition": "SHA-256 of UTF-8 canonical JSON mapping relative POSIX filenames to file SHA-256, sorted keys, separators comma/colon. Export excludes this manifest, .git, dependencies, caches and build outputs.",
   "local_validation": {
@@ -40,12 +40,6 @@
     "resource_hash_validation_passed": true,
     "deterministic_archive_passed": true,
     "canonical_commit_pending_root_verification": false
-  },
-  "local_artifacts": {
-    "tldw-skill-0.2.6.zip": {
-      "sha256": "63ec05c88c274e802e6e6801577a9699d5801572ea520d18160f2cec6fd2b87f",
-      "bytes": 9353
-    }
   },
   "registry_published": false,
   "automatic_registry_publication": false,

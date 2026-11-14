@@ -2,10 +2,10 @@
 
 Choose an existing connected transport; do not install another just to read a
 result. The deployment's `/llms.txt` indexes maintained API documentation, and
-`/openapi.json` contains the full schema. The CLI and SDK downloads are linked
-from `/agents`, with a SHA-256 checksum for each file. Install only from those
-operator URLs after the checksum matches; never install a similarly named package
-from a public registry.
+`/openapi.json` contains the full schema. Install the SDKs as npm `@tldw/client`
+or PyPI `tldw-client`. As a fallback, `/agents` links versioned downloads with a
+SHA-256 checksum for each file; install those only after the checksum matches.
+Never install a similarly named package.
 
 ## Transcript-only extraction
 
@@ -100,11 +100,11 @@ ID for later resumption; a stopped client does not cancel the server job.
 
 ## SDKs and reference workflows
 
-Install the clients only from the deployment's versioned `.tgz` / `.whl`
-downloads listed on its `/agents` page, after verifying each file's SHA-256 shown
-there (for example `shasum -a 256 -c -`), and then install the verified local
-file. Do not search for, suggest or install the clients from a public package
-registry. Once installed, JavaScript imports `TldwClient` from the installed
+Install the clients with `npm install @tldw/client` or
+`python -m pip install tldw-client`. The fallback is the deployment's versioned
+`.tgz` / `.whl` download listed on its `/agents` page: verify its SHA-256 shown
+there (for example `shasum -a 256 -c -`), then install the verified local file.
+Never install a similarly named package. Once installed, JavaScript imports `TldwClient` from the installed
 package and Python imports `tldw_client`. Both clients expose submit,
 poll and retrieve methods; `analyze` combines them while retaining the receipt.
 Generated output and original source use separate reads: JavaScript `getSummary`
@@ -113,10 +113,6 @@ completed job's `summary_id` and require `summaries:read`. They do not start
 another analysis or consume processing credits. REST reads saved source at
 `GET /v1/summaries/{summary_id}/transcript`; MCP uses paginated `get_transcript`.
 
-The deployment's reference-workflow ZIP includes runnable YouTube research,
-TikTok comparison and complete-thread-text scripts. Their README gives the actual
-file layout and arguments; use `--help` before running a new workflow.
-
-For a TikTok comparison use the caller's links and chosen focus. The REST request
-contains `urls` and `instructions`; the response wraps `comparison`. The completed
-result includes cited findings and source coverage, including unusable clips.
+The deployment's reference-workflow ZIP includes runnable YouTube research and
+complete-thread-text scripts. Their README gives the actual file layout and
+arguments; use `--help` before running a new workflow.
