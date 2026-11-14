@@ -16,6 +16,15 @@ RESOURCES = {
 SECRET = re.compile(
     r"(?:sk-[A-Za-z0-9_-]{24,}|tldw_[a-f0-9]{24}_[A-Za-z0-9_-]{43}|-----BEGIN .*PRIVATE KEY-----)"
 )
+# Maintainer note: `@tldw` (npm) and `tldw-client` (PyPI) are not yet verified as
+# owned by this project. The skill must not send agents to those registry names
+# (dependency-confusion risk); see README "Provenance and synchronization".
+REGISTRY_INSTALL = re.compile(
+    r"(?:npm\s+(?:install|i|add)\s+@tldw/client|npx\s+(?:--yes\s+)?@tldw/client"
+    r"|pip3?\s+install\s+(?:-U\s+)?tldw-client\b"
+    r"|configured registry|registry availability)",
+    re.IGNORECASE,
+)
 
 
 def validate(root=ROOT):
@@ -27,7 +36,7 @@ def validate(root=ROOT):
         manifest.get("version"),
         manifest.get("entry"),
         manifest.get("license"),
-    ) != (1, "tldw", "0.2.1", "SKILL.md", "MIT"):
+    ) != (1, "tldw", "0.2.6", "SKILL.md", "MIT"):
         raise ValueError("Skill manifest identity/version mismatch")
     if set(manifest.get("files", {})) != RESOURCES:
         raise ValueError("Skill resource allowlist mismatch")
@@ -51,6 +60,8 @@ def validate(root=ROOT):
         text = content.decode("utf-8")
         if "[TODO:" in text or SECRET.search(text):
             raise ValueError("Unfinished scaffold or likely credential")
+        if REGISTRY_INSTALL.search(text):
+            raise ValueError("Skill must not direct agents to unverified registry packages")
         contents[name] = content
         if name.endswith(".md"):
             for target in re.findall(r"\]\(([^)]+)\)", text):
@@ -63,7 +74,7 @@ def validate(root=ROOT):
             for block in re.findall(r"```json\n([\s\S]*?)```", text):
                 json.loads(block)
     entry = contents["SKILL.md"].decode()
-    if not entry.startswith("---\nname: tldw\n") or 'version: "0.2.1"' not in entry:
+    if not entry.startswith("---\nname: tldw\n") or 'version: "0.2.6"' not in entry:
         raise ValueError("Skill frontmatter identity/version mismatch")
     description = re.search(r"^description: (.+)$", entry, re.MULTILINE)
     if not description or not 1 <= len(description[1]) <= 1024:

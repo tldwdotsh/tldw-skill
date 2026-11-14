@@ -27,7 +27,7 @@ No external dependencies, monorepo checkout, model key or network request is
 required. The validator checks the identity/version, the five-resource allowlist,
 SHA-256 hashes, local Markdown links, JSON examples, and agent-interface metadata.
 Tests cover deterministic packaging and reject changed, missing and symlinked
-resources. The builder writes `dist/tldw-skill-0.2.1.zip` and its checksum manifest.
+resources. The builder writes `dist/tldw-skill-0.2.6.zip` and its checksum manifest.
 CI performs only these validations, with read-only repository permissions and no
 registry credentials, publication, deployment or inference.
 
@@ -62,3 +62,11 @@ export. Review changes in the canonical monorepo, refresh the copied skill and
 its manifest together, then rerun validation and tests. Do not silently diverge
 or overwrite independent edits. This private GitHub repository is not a public
 skill-directory listing or an npm/PyPI release.
+
+Maintainer note: the skill deliberately contains no registry installation
+instructions and no "check the registry" step, because the npm scope and PyPI
+project names for the clients are not yet verified as owned by this project.
+Agents install the CLI/SDKs only from the operator's download URL after a SHA-256
+check. `scripts/validate.py` rejects registry wording. Registry instructions may
+return only after both names are claimed and a first release is published by
+this project.

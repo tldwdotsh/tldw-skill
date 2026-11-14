@@ -68,6 +68,28 @@ class SkillTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "reference"):
                 validate(clone)
 
+    def test_unverified_registry_install_guidance_is_rejected_even_with_updated_hash(self):
+        for wording in (
+            "Run npm install @tldw/client first.",
+            "Use npx @tldw/client init.",
+            "python -m pip install tldw-client",
+            "Confirm availability in the user's configured registry.",
+        ):
+            with tempfile.TemporaryDirectory() as directory:
+                clone = Path(directory) / "skill"
+                shutil.copytree(
+                    ROOT, clone, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__")
+                )
+                reference = clone / "references/workflows.md"
+                reference.write_text(reference.read_text() + "\n" + wording + "\n")
+                manifest = json.loads((clone / "skill.json").read_text())
+                manifest["files"]["references/workflows.md"] = hashlib.sha256(
+                    reference.read_bytes()
+                ).hexdigest()
+                (clone / "skill.json").write_text(json.dumps(manifest))
+                with self.assertRaisesRegex(ValueError, "registry"):
+                    validate(clone)
+
     def test_symlink_resource_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             clone = Path(directory) / "skill"

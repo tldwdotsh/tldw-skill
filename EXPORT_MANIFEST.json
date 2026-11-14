@@ -1,50 +1,50 @@
 {
   "schema_version": 1,
   "name": "tldw-skill",
-  "version": "0.2.1",
-  "exported_at": "2026-11-07T08:36:18.510324+00:00",
+  "version": "0.2.6",
+  "exported_at": "2026-11-14T04:30:37.216164+00:00",
   "repository": "https://github.com/tldwdotsh/tldw-skill",
   "repository_private": true,
   "canonical_repository": "https://github.com/tldwdotsh/tldw",
   "canonical_directory": "packages/agent-skill/tldw",
-  "canonical_source_commit": "c7bb67da31f3ba81f2e5c2ef3a901f65176f16c0",
+  "canonical_source_commit": "bbae9068c981573e8a391b17b57c16d8663ce81a",
   "canonical_source_kind": "verified_canonical_commit",
-  "canonical_source_snapshot_sha256": "bdcc223ca5e5d0588d8904f0d27cce4841da9b8b4caf13bf0fd26a996a83e8dd",
+  "canonical_source_snapshot_sha256": "159e2f08795f6f39ca4f9a006680f92f6550f46563ad2801f802fd51284be552",
   "canonical_files": {
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "SKILL.md": "05561d2221221ffb65ec784e5a4b9ee60f0dd2bdc16d764df107cefa428f6084",
+    "SKILL.md": "1190cc414f40e9f3a5cef8db282252f4fecca16e23c24f376dc2baf25a4d04e6",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/source-limits.md": "72f02c427f534c80cdce833e4b698a9121f14f814c9df745ff9af89c63dc0e61",
-    "references/workflows.md": "93fcebf2000b237d556e593d27e8eb4ff2e0038a7e4284982f4cf3988e9fae90"
+    "references/source-limits.md": "6cf79c2d31072499f9fe5658b05aaf7ff5f308004dff5fb6c21aa381a0bb844d",
+    "references/workflows.md": "814671dcf691d2d6fd481a1f910d1b1fefa5aae6061dc6bb841bf05929b9fced"
   },
-  "export_snapshot_sha256": "436cf6428f17ce7210a4f0850a8466d849a1f018099c6971092b48993f1925de",
+  "export_snapshot_sha256": "df992f6e18747d69640d4f6468b603d700b8d0582e5b65b7f61cd7f8282005e8",
   "export_files": {
-    ".github/workflows/validate.yml": "5443d9bbffed1756e9513fd20bd9b91d685563ed73451f5f3c7ffe39c9e843f2",
+    ".github/workflows/validate.yml": "adcb1c92d426bcc20ffa6e200942d35136b7f133dfff9c2086b4e45ef05423f1",
     ".gitignore": "2682bd7572b68987632de8f3e52a5993dc1f5732e87d64c6582bd7a8b0184b7f",
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "README.md": "fe9e55b4e7c4278eaba12159ce17b1d255016cb69eadf378d84b73b7cd4dbf3a",
-    "SKILL.md": "05561d2221221ffb65ec784e5a4b9ee60f0dd2bdc16d764df107cefa428f6084",
+    "README.md": "9cf523b5b0a1a21237791e8fa5cc299e9077f264a23df4838b2e5798c10baea1",
+    "SKILL.md": "1190cc414f40e9f3a5cef8db282252f4fecca16e23c24f376dc2baf25a4d04e6",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/source-limits.md": "72f02c427f534c80cdce833e4b698a9121f14f814c9df745ff9af89c63dc0e61",
-    "references/workflows.md": "93fcebf2000b237d556e593d27e8eb4ff2e0038a7e4284982f4cf3988e9fae90",
+    "references/source-limits.md": "6cf79c2d31072499f9fe5658b05aaf7ff5f308004dff5fb6c21aa381a0bb844d",
+    "references/workflows.md": "814671dcf691d2d6fd481a1f910d1b1fefa5aae6061dc6bb841bf05929b9fced",
     "scripts/__init__.py": "6fd113b2273ac3edb019fc4eac189e19d84994cc77486eda0b5396b77715ad5a",
     "scripts/build.py": "b8b5321c6de64fe7fe54e449c72deabf49d0119cdb0e9cee08533ed1742f2265",
-    "scripts/validate.py": "46c53bf94673a146609bed492bc85670e4fd69c7cb807c7788688c5360bb5a53",
-    "skill.json": "cc4188a0ae258fb9b77769dbc75f56126e013a5ca94aed4952041a3f19859684",
-    "tests/test_skill.py": "7ca3241f7dfd77b467520975c11e3629c8b9051615af84674312a3a1f81db2f7"
+    "scripts/validate.py": "718bad285fc387204ab3a154f85eb0e0901d77928400aa679e06a9f8f107c372",
+    "skill.json": "e8199990988589b04b920f15c2c5002484ad31f39c42ad7ed11b172112025a0c",
+    "tests/test_skill.py": "b935bdb894fdca6ddd4d5912f4928e7292d04a00d83ba15b10c5a7df0d2b5630"
   },
   "hash_definition": "SHA-256 of UTF-8 canonical JSON mapping relative POSIX filenames to file SHA-256, sorted keys, separators comma/colon. Export excludes this manifest, .git, dependencies, caches and build outputs.",
   "local_validation": {
     "tests_are_offline_fixture_only": true,
-    "canonical_commit_pending_root_verification": false,
-    "unit_tests_passed": 5,
+    "unit_tests_passed": 6,
     "resource_hash_validation_passed": true,
-    "deterministic_archive_passed": true
+    "deterministic_archive_passed": true,
+    "canonical_commit_pending_root_verification": false
   },
   "local_artifacts": {
-    "tldw-skill-0.2.1.zip": {
-      "sha256": "71b31387f47f9cb204aefea9fa6dc776158cd712f9a32a88648bf38be041bbda",
-      "bytes": 6566
+    "tldw-skill-0.2.6.zip": {
+      "sha256": "63ec05c88c274e802e6e6801577a9699d5801572ea520d18160f2cec6fd2b87f",
+      "bytes": 9353
     }
   },
   "registry_published": false,
