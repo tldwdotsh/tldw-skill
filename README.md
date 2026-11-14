@@ -27,7 +27,7 @@ No external dependencies, monorepo checkout, model key or network request is
 required. The validator checks the identity/version, the five-resource allowlist,
 SHA-256 hashes, local Markdown links, JSON examples, and agent-interface metadata.
 Tests cover deterministic packaging and reject changed, missing and symlinked
-resources. The builder writes `dist/tldw-skill-0.2.7.zip` and its checksum manifest.
+resources. The builder writes `dist/tldw-skill-0.2.8.zip` and its checksum manifest.
 CI performs only these validations, with read-only repository permissions and no
 registry credentials, publication, deployment or inference.
 

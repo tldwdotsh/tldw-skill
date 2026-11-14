@@ -38,7 +38,7 @@ def validate(root=ROOT):
         manifest.get("version"),
         manifest.get("entry"),
         manifest.get("license"),
-    ) != (1, "tldw", "0.2.7", "SKILL.md", "MIT"):
+    ) != (1, "tldw", "0.2.8", "SKILL.md", "MIT"):
         raise ValueError("Skill manifest identity/version mismatch")
     if set(manifest.get("files", {})) != RESOURCES:
         raise ValueError("Skill resource allowlist mismatch")
@@ -76,7 +76,7 @@ def validate(root=ROOT):
             for block in re.findall(r"```json\n([\s\S]*?)```", text):
                 json.loads(block)
     entry = contents["SKILL.md"].decode()
-    if not entry.startswith("---\nname: tldw\n") or 'version: "0.2.7"' not in entry:
+    if not entry.startswith("---\nname: tldw\n") or 'version: "0.2.8"' not in entry:
         raise ValueError("Skill frontmatter identity/version mismatch")
     description = re.search(r"^description: (.+)$", entry, re.MULTILINE)
     if not description or not 1 <= len(description[1]) <= 1024:

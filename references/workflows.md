@@ -30,7 +30,6 @@ summary. Transcript `wait_job` returns metadata and source pointers with
 inline wait argument. Submission needs `jobs:write`, polling `jobs:read`, and
 source reads `summaries:read`.
 
-Supply an owned parsed subtitle `upload_id` instead of `media` to reuse an upload.
 SDKs expose `submitTranscript` / `submit_transcript`; convenience
 `extractTranscript` / `extract_transcript` also wait and read the source. CLI:
 `tldw extract --media URL_OR_TEXT` or `--file PATH`; `tldw wait JOB_ID` resumes.
