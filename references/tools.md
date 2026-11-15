@@ -7,7 +7,7 @@ Client-specific prefixes do not change a tool's name or required scope.
 <!-- generated:tldw-tools -->
 | Tool | Scope | Use |
 | --- | --- | --- |
-| `account_usage` | `account:read` | Read current plan, credits, rates and source/audio/concurrency/search limits before submitting. |
+| `account_usage` | `account:read` | Read current plan, credits, rates and source/concurrency/search limits before submitting. |
 | `analyze_media` | `jobs:write` | Submit one authorized source with instructions and a stable idempotency key. |
 | `get_job` | `jobs:read` | Read the same durable job and its polling guidance. |
 | `wait_job` | `jobs:read` | Wait on the same job; a client timeout does not cancel it. |
@@ -31,7 +31,10 @@ one of the plan's monthly searches, and the count resets each billing period;
 left. Check `video.over_plan_limit`, then pass a chosen result's `url` to
 `analyze_media`.
 
-`transcription` and `force_asr`: do not set; the server decides. Developers can
-override these options through the SDK. A user-authorized `max_credits` bounds
-spending; it does not grant a plan feature or bypass source restrictions.
+Omit `transcription` and `force_asr`: legacy values are accepted for compatibility
+but do not enable audio. Fresh audio transcription is not supported on any plan.
+A user-authorized `max_credits` bounds spending without granting plan features or
+bypassing source restrictions. `CAPTIONS_UNAVAILABLE` releases the failed job's
+hold without a processing-credit charge; stop or accept authorized source text,
+and do not resubmit automatically.
 Do not infer privileges from an account name, role or credential prefix.

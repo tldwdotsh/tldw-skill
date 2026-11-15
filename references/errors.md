@@ -22,8 +22,9 @@ machine-readable guidance is at https://tldw.sh/docs/errors.json.
 | `SEARCH_QUOTA_EXCEEDED` | 402 | The plan's monthly X video searches are used up; the count resets when the next billing period starts. Show details.upgrade.billing_url to the owner when present; do not retry or purchase anything. |
 | `VIDEO_TOO_LONG` | 422 | Compare details.duration_minutes with details.limit_minutes. Show the available upgrade; do not resubmit the same source. |
 | `PLAN_FEATURE_REQUIRED` | 403 | Show the plan requirement and details.upgrade.billing_url to the account owner. |
-| `ASR_REQUIRES_UPGRADE` | 403 | The account cannot transcribe this source. Show the plan requirement or accept complete source text from the user. |
-| `TRANSCRIPTION_NOT_ALLOWED` | 422 | Read details.reason and the account's enabled platforms. Explain the limitation; do not change transcription options or resubmit automatically. |
+| `CAPTIONS_UNAVAILABLE` | 422 | No accessible captions or usable saved transcript were found. The failed job releases its hold without a processing-credit charge. Stop or accept authorized source text; do not resubmit automatically. Fresh audio transcription is not supported; legacy controls do not enable it. |
+| `ASR_REQUIRES_UPGRADE` | 403 | Fresh audio transcription is not supported on this service. Use usable saved source, captions or authorized supplied text; upgrading or changing legacy controls does not enable audio. |
+| `TRANSCRIPTION_NOT_ALLOWED` | 422 | Fresh audio transcription is not supported. Legacy transcription controls do not enable it; use usable saved source, captions or authorized supplied text instead. |
 | `MAX_CREDITS_EXCEEDED` | 402, 422 | The ceiling is invalid or below the required charge. Ask the owner before increasing it; preserve the original job or request. |
 | `DUPLICATE_ACTIVE_JOB` | 409 | Find and follow the existing job rather than submitting another copy. |
 | `RATE_LIMITED` | 429 | Honor Retry-After and the existing job's polling hint. Retry an uncertain POST only with the exact original body and idempotency key. |
@@ -43,7 +44,7 @@ machine-readable guidance is at https://tldw.sh/docs/errors.json.
 | `INVALID_URL` | 400 | Ask for a supported YouTube or public X link, or complete supplied text. Do not guess the source. |
 | `UNSUPPORTED_PLATFORM` | 400 | Use a supported source or complete text provided by the user. Do not substitute an unrelated link. |
 | `VALIDATION_ERROR` | 409, 422 | Correct the rejected fields using the documented schema; do not raise a spending ceiling without user authorization. |
-| `NOT_FOUND` | 404 | Check the existing job and its own source IDs. New audio transcripts require successful completion; do not guess other IDs. |
+| `NOT_FOUND` | 404 | Check the existing job and its own source IDs. Do not guess other IDs. |
 | `ACCOUNT_UNAVAILABLE` | 403 | Stop and direct the account owner to support. Rotating credentials or creating another account does not resolve account suspension. |
 | `SPEND_LIMIT_REACHED` | 503 | The service or account provider budget refused this call. Stop automatic retries; preserve the job/key and wait for capacity or owner support guidance. |
 | `SOURCE_FETCH_FAILED` | 503 | The source provider could not complete retrieval. Preserve the request/key and explain the failure; do not start new analyses automatically. |

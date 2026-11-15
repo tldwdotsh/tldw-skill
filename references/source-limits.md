@@ -1,6 +1,7 @@
 # Source coverage
 
-- YouTube uses available captions or eligible audio transcription.
+- YouTube uses usable saved source or available captions; fresh audio
+  transcription is not supported, so missing source/captions fail.
   Private, members-only, age-restricted, removed or region-restricted media may
   be unavailable. Live streams must end before processing.
 - A public X URL defaults to `scope:auto`: one attached video, the complete
@@ -12,7 +13,7 @@
   alone is insufficient; use its sharing post or supply complete text.
 - YouTube reuses usable saved transcripts. X text and Article sources
   can be reused for up to 24 hours. `refresh_source=true` requests current source
-  content; it does not grant audio permissions or change the user's budget.
+  content; it does not change the user's budget.
 - Summary instructions can request translated text. Original source text stays
   saved separately; the service does not inspect unseen visuals or produce
   dubbed audio, translated video or translated subtitle files.
@@ -20,12 +21,16 @@
   They do not return original subtitle-file bytes or guarantee word-perfect
   speech recognition. Quoting source requires the saved transcript, not the
   generated summary.
-- Newly transcribed audio becomes readable after the job successfully settles.
-  Failure or cancellation releases its hold and leaves unpaid ASR unavailable.
-  Previously completed saved sources remain readable without a new charge.
+- Failure or cancellation releases a job's hold. Previously completed saved
+  sources remain readable without a new charge.
+- `CAPTIONS_UNAVAILABLE` means no accessible captions or usable saved source were
+  found. The failed job releases its hold without a processing-credit charge.
+  Stop or accept authorized source text; do not resubmit automatically. A blocked
+  or temporarily failed retrieval keeps its own error code and does not establish
+  that captions are absent.
 
 Read live account limits with `account_usage`. Free uses captions, text and
-saved transcripts. Audio requires an eligible plan and enabled platform.
+saved transcripts.
 Hobby is the paid launch offer; existing Pro accounts keep their plan eligibility.
 Source-duration, concurrent-job, request-attempt, provider-budget and X video
 search limits can still prevent work. Follow the returned error rather than

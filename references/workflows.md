@@ -21,6 +21,45 @@ Send a stable `Idempotency-Key` with this request. HTTP 202 returns `job_id`,
 waiting. Resume `GET /v1/jobs/{job_id}` after a disconnect; reuse the exact body
 and key when the initial submission outcome is uncertain.
 
+These MCP tools use the corresponding REST operations and scopes. MCP applies
+its own result projection and bounded response limits:
+
+| MCP tool | REST |
+| --- | --- |
+| `account_usage` | `GET /v1/me` |
+| `search_videos` | `POST /v1/searches` |
+| `analyze_media` | `POST /v1/analyses` |
+| `wait_job` | `GET /v1/jobs/{job_id}/wait?wait_seconds=8` (0 to 10; a timeout keeps the job running) |
+| `get_job` | `GET /v1/jobs/{job_id}` |
+| `get_summary` | `GET /v1/summaries/{summary_id}` |
+| `get_transcript` | `GET /v1/summaries/{summary_id}/transcript/page?offset=0&limit=100`; follow `next_offset` |
+
+Known search duration gives a caption-rate estimate, not a final quote or proof
+that captions are available. Always send `max_credits` within the authorized
+budget: round a known caption-rate estimate up to a whole credit, then cap at
+the smaller of that amount and the remaining budget.
+Missing or null estimates remain unknown; use an authorized per-job ceiling
+rather than inventing a duration. Before
+the worker resolves source duration, the estimate may use the plan's maximum
+duration; the hold is bounded by `max_credits` and available credits. Actual
+source duration and the selected rate determine settlement. Honor the user's
+ceiling rather than increasing it to match an estimate.
+
+Omit `transcription` and `force_asr`. Their legacy values are accepted for
+compatibility and ignored; none enable audio. The service uses usable saved
+source or accessible captions and does not start fresh audio transcription.
+`CAPTIONS_UNAVAILABLE` is a nonretryable missing-captions failure: the job releases
+its hold and has no processing-credit charge. A blocked or temporarily failed
+retrieval keeps its own error code and does not prove absence. Stop or accept
+authorized source text; do not resubmit automatically.
+
+Answer follow-ups from saved source/results when sufficient. If the user asks
+for new analysis, use the same link, new `instructions` and a new stable key.
+A free re-ask requires this account's completed source, a usable saved transcript
+and a live policy covering the instructions. `rates.reask=0` alone may cover
+only identical instructions; check `tldw://guide` before promising a free new
+brief. Source refresh does not qualify. Keep the user's cap.
+
 After completion, use `GET /v1/summaries/{summary_id}` for the analysis and source
 references. Read saved original source using the job's `transcript_id` with
 `GET /v1/transcripts/{transcript_id}/page`, or use the summary-linked
@@ -221,8 +260,8 @@ Fields can be omitted as well as null, and flat results may be incomplete or
 stale. Known live/upcoming entries cannot be processed until the stream ends.
 Before authorized processing, check `account_usage`; skip a known duration over
 `plan.max_video_minutes`. An unknown duration does not establish plan eligibility.
-Any caption-rate cost calculated from duration is only an estimate; eligible
-fresh audio costs more and the server enforces `max_credits`. No source analysis
+Any caption-rate cost calculated from duration is only an estimate; the server
+enforces `max_credits`. No source analysis
 has happened during this search.
 
 `ytsearch5` is one bounded discovery, not a tldw pagination operation. If the
@@ -282,7 +321,8 @@ receipt = client.submit_analysis(
 )
 ```
 
-Omit `transcription` and `force_asr` so the server chooses eligible fallback.
+Omit `transcription` and `force_asr` to keep the request captions-only. Missing
+captions do not authorize a new request; audio is not supported.
 Save the accepted `job_id` receipt before waiting, then follow
 [the same durable job](#submit-once-read-both-outputs) and read its saved outputs.
 One analysis saves both outputs; do not submit another job just to obtain its
