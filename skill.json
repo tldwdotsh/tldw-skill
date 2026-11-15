@@ -2,7 +2,7 @@
   "entry": "SKILL.md",
   "files": {
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "SKILL.md": "5c6951f2ca0d00fb0aeb8258a473baec4c7687a9c1aaca07645b6d87d3b4abf8",
+    "SKILL.md": "74bfee0ac0f56aeeccc6fa968a69665b4b98d5ebb909e7766a911d107b89b2ac",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
     "references/errors.md": "572261fe9d3016c59ca520f4cf5a1b7c026714d189d8f1dd00426a2d2ee6a16c",
     "references/setup.md": "47edddb6b7dd7b77d74e8202c5ce0bbacad67c0930b7469ef0c42fe377e9c066",
@@ -13,5 +13,5 @@
   "license": "MIT",
   "name": "tldw",
   "schema_version": 1,
-  "version": "0.3.2"
+  "version": "0.3.3"
 }

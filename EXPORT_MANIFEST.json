@@ -1,13 +1,13 @@
 {
   "automatic_registry_publication": false,
   "canonical_directory": "packages/agent-skill/tldw",
-  "canonical_source_commit": "f746fefc9ad50cd2f7b848028a6af6c9373d4e0c",
-  "canonical_source_snapshot_sha256": "f9a0e3ac66d4354f305d8d84fdee98ce6c7cc9513b73656710e2e775142a83df",
+  "canonical_source_commit": "a27db33263173928796b1c5017f3d2b85f69d177",
+  "canonical_source_snapshot_sha256": "585a5f79a30740f40aa3c6328337db6e413073d7174772d4fc6c832b0eec7021",
   "export_files": {
     ".gitignore": "427249912cc347340b2cff8e7a6c6daae0077b16be21d8c7306752386c4a0186",
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
     "README.md": "aac0cfe5cf0e41cf6a2daba6fa9a8ef70d30cb6c4eced088f4df6a9b93d4b9ff",
-    "SKILL.md": "5c6951f2ca0d00fb0aeb8258a473baec4c7687a9c1aaca07645b6d87d3b4abf8",
+    "SKILL.md": "74bfee0ac0f56aeeccc6fa968a69665b4b98d5ebb909e7766a911d107b89b2ac",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
     "references/errors.md": "572261fe9d3016c59ca520f4cf5a1b7c026714d189d8f1dd00426a2d2ee6a16c",
     "references/setup.md": "47edddb6b7dd7b77d74e8202c5ce0bbacad67c0930b7469ef0c42fe377e9c066",
@@ -17,11 +17,11 @@
     "scripts/__init__.py": "87b4204d4cf91054962040366a3ed25f1901d702c3fa5828af7fd8256a6f4e56",
     "scripts/build.py": "e57a47b279d6874672260573ccef3ca6b6aa37f17c880b7db19fb4f462a1fc3a",
     "scripts/validate.py": "4db7206e90c15d98f39fd638164733628c3a2544eaa744e674fd415f1d21b1ac",
-    "skill.json": "32c14b98b6e17eb6587af47679651f4410bc6f7206ac6e517643ee08d8a457c1",
+    "skill.json": "acaef8bc7a30991a638847acad9f62e2f9776513a51ef5917ebad21dbd28d17a",
     "tests/test_skill.py": "6e242537034bbb61af1f23f5cdb8d97115dd5578b6728e52f02558c5e8299272"
   },
-  "export_snapshot_sha256": "4a56789b3e7e9f0f18b326e9d6ac2b756d765e1db309aa3befbdc40b60e96149",
+  "export_snapshot_sha256": "5b78a1911c361f4ff10e83d46fc5f780955b1471592862fa41fd65e4e1319d96",
   "name": "tldw-skill",
   "schema_version": 1,
-  "version": "0.3.2"
+  "version": "0.3.3"
 }
