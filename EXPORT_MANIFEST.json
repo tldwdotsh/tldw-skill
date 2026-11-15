@@ -1,27 +1,27 @@
 {
   "automatic_registry_publication": false,
   "canonical_directory": "packages/agent-skill/tldw",
-  "canonical_source_commit": "7631d36b41876d811df4f9045a50c4a7daa03118",
-  "canonical_source_snapshot_sha256": "6dc5c14f90d12a52ce2b05a6c6dc59fd44b345f30eed0b4db8f4748884fa530f",
+  "canonical_source_commit": "f746fefc9ad50cd2f7b848028a6af6c9373d4e0c",
+  "canonical_source_snapshot_sha256": "f9a0e3ac66d4354f305d8d84fdee98ce6c7cc9513b73656710e2e775142a83df",
   "export_files": {
     ".gitignore": "427249912cc347340b2cff8e7a6c6daae0077b16be21d8c7306752386c4a0186",
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "README.md": "459d15deb7b6461949698d3aae66a550360d088c9881c2dea4aa362bfe8b90fa",
-    "SKILL.md": "ae78e83931d8f61b8bd91c2eec0541fde4f4d38c7ef79df4f074347b2ee9f597",
+    "README.md": "aac0cfe5cf0e41cf6a2daba6fa9a8ef70d30cb6c4eced088f4df6a9b93d4b9ff",
+    "SKILL.md": "5c6951f2ca0d00fb0aeb8258a473baec4c7687a9c1aaca07645b6d87d3b4abf8",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
     "references/errors.md": "572261fe9d3016c59ca520f4cf5a1b7c026714d189d8f1dd00426a2d2ee6a16c",
-    "references/setup.md": "f1518059a02e3503a9ab0da403e37375c2f5f1433d8cce45f94230458999c749",
-    "references/source-limits.md": "b39f7b2663bcfb21dca9ea6e17c33e25f53b8fe181e00fcb3e2f2a9b3ad2c016",
+    "references/setup.md": "47edddb6b7dd7b77d74e8202c5ce0bbacad67c0930b7469ef0c42fe377e9c066",
+    "references/source-limits.md": "754571449d9706de42c2a8d073b3fdaebda025fdd91f7e986c93d9694cd43727",
     "references/tools.md": "cebe2c48914bd1afa53c334cbad9ed650e034da80e5682f7808e330eb6b01ce7",
-    "references/workflows.md": "69f5c425ac95202b0c4bb0a8f0a2ac6367072249fcf513c880b73a42fee55ec0",
+    "references/workflows.md": "510f72888d582dd6aacfc11536a7b034f3ddbc07385abdd11f9fb676dc39d3d8",
     "scripts/__init__.py": "87b4204d4cf91054962040366a3ed25f1901d702c3fa5828af7fd8256a6f4e56",
     "scripts/build.py": "e57a47b279d6874672260573ccef3ca6b6aa37f17c880b7db19fb4f462a1fc3a",
     "scripts/validate.py": "4db7206e90c15d98f39fd638164733628c3a2544eaa744e674fd415f1d21b1ac",
-    "skill.json": "4436dc23f26ed7c86d7ef95eed61c0bb99a9f62c6004744ba081cabe5b43a1a3",
+    "skill.json": "32c14b98b6e17eb6587af47679651f4410bc6f7206ac6e517643ee08d8a457c1",
     "tests/test_skill.py": "6e242537034bbb61af1f23f5cdb8d97115dd5578b6728e52f02558c5e8299272"
   },
-  "export_snapshot_sha256": "1fb57a591dc8095a5861d315cf14cbe55f31acaabc3613b3a2a3b30fd70d6cb2",
+  "export_snapshot_sha256": "4a56789b3e7e9f0f18b326e9d6ac2b756d765e1db309aa3befbdc40b60e96149",
   "name": "tldw-skill",
   "schema_version": 1,
-  "version": "0.3.1"
+  "version": "0.3.2"
 }

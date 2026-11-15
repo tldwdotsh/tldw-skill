@@ -3,7 +3,7 @@ name: tldw
 description: Analyze user-supplied YouTube or public X links and supplied text with tldw.sh, then retrieve the saved summary and original transcript. Use for source-grounded summaries, custom questions, transcript retrieval and finding videos on a topic.
 license: MIT
 metadata:
-  version: "0.3.1"
+  version: "0.3.2"
 ---
 
 # tldw.sh
@@ -96,15 +96,13 @@ including when it finds no results; provider failures do not count. `usage` show
 what is left in the plan period. The same query and sort within 15 minutes returns
 saved results without using another search.
 
-YouTube: tldw.sh does not search YouTube. With a shell and yt-dlp, run:
-
-```sh
-yt-dlp "ytsearch5:graph engineering" --flat-playlist \
-  --print "%(duration_string)s | %(title)s | https://www.youtube.com/watch?v=%(id)s"
-```
-
-Ask before installing yt-dlp. Without a shell, use your own web search to find
-links.
+YouTube discovery runs on the user's machine with yt-dlp; tldw.sh has no hosted
+YouTube search endpoint. Check `yt-dlp --version` first and ask before installing
+it; use [the setup options](references/setup.md#youtube-discovery-tool) when
+needed. Follow [Find YouTube videos](references/workflows.md#find-youtube-videos)
+for the bounded `ytsearch5` command, cached JSON, missing metadata, candidate
+presentation and the selected-link MCP/REST/SDK requests. Discovery alone starts
+no analysis. Without a shell, use your own web search or ask for a link.
 
 ## Costs and source coverage
 

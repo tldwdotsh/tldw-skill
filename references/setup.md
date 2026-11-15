@@ -37,3 +37,46 @@ Set `TLDW_API_URL` explicitly to https://api.tldw.sh for SDK or CLI setup, or to
 an explicitly configured HTTPS deployment. Preserve unrelated client configuration. Run
 `tldw doctor` for a read-only connection check; it submits no processing work
 and does not establish media coverage or billing readiness.
+
+## YouTube discovery tool
+
+YouTube search is a local yt-dlp operation, separate from tldw's hosted X search.
+First check the existing executable without making a media request:
+
+```sh
+yt-dlp --version
+```
+
+Reuse a working installation. If it is missing, ask before installing, then
+choose one method that fits the user's existing tools. Do not install several
+copies or a new package manager just to follow this table.
+
+| Existing tool or platform | Install command or source |
+| --- | --- |
+| uv, macOS/Linux/Windows | `uv tool install "yt-dlp[default]"` |
+| pipx, macOS/Linux/Windows | `pipx install "yt-dlp[default]"` |
+| Homebrew, macOS/Linux | `brew install yt-dlp` |
+| winget, Windows | `winget install --source winget --id yt-dlp.yt-dlp` |
+| No suitable manager | Choose the matching OS/CPU asset from the [official releases](https://github.com/yt-dlp/yt-dlp/releases/latest). |
+
+The Python distribution currently requires Python 3.11 or newer; uv/pipx keep
+the application in its own environment. Use a compatible existing interpreter
+or an appropriate standalone release. Do not use `sudo pip`,
+`--break-system-packages` or remove an `EXTERNALLY-MANAGED` marker. If installation
+requires another runtime or a PATH change, explain that step before changing it.
+Check `yt-dlp --version` again from the shell that will run discovery.
+
+Use the same installation method for an authorized update, for example
+`uv tool upgrade yt-dlp`, `pipx upgrade yt-dlp` or `brew upgrade yt-dlp`.
+Package-manager releases can lag upstream. Full YouTube downloading may require
+additional upstream dependencies; the discovery workflow requests flat metadata
+and does not download or process audio/video. A working version check alone does
+not prove search will succeed. On an error, report it without automatically
+installing more tools, importing browser cookies or retrying indefinitely.
+
+Installation and option details: [yt-dlp installation](https://github.com/yt-dlp/yt-dlp/wiki/Installation),
+[yt-dlp usage and dependencies](https://github.com/yt-dlp/yt-dlp#readme),
+[uv tools](https://docs.astral.sh/uv/guides/tools/) and
+[pipx](https://pipx.pypa.io/latest/). Check these primary sources and the installed
+`yt-dlp --help` when options or platform requirements change. Continue with
+[Find YouTube videos](workflows.md#find-youtube-videos).
