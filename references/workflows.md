@@ -68,13 +68,16 @@ duration; the hold is bounded by `max_credits` and available credits. Actual
 source duration and the selected rate determine settlement. Honor the user's
 ceiling rather than increasing it to match an estimate.
 
-Omit `transcription` and `force_asr`. Their legacy values are accepted for
-compatibility and ignored; none enable audio. The service uses usable saved
-source or accessible captions and does not start fresh audio transcription.
-`CAPTIONS_UNAVAILABLE` is a nonretryable missing-captions failure: the job releases
-its hold and has no processing-credit charge. A blocked or temporarily failed
-retrieval keeps its own error code and does not prove absence. Stop or accept
-authorized source text; do not resubmit automatically.
+Omit `transcription` and `force_asr`. Legacy values are ignored, including
+`transcription=never`; they cannot disable or force audio. The server reuses
+usable saved source or captions first. Where audio processing is enabled for
+the platform, missing usable captions trigger automatic original-audio
+transcription on every plan at the same 1 credit per source minute.
+`CAPTIONS_UNAVAILABLE` is nonretryable: available processing could not read the
+source, so the job releases its hold with no processing-credit charge.
+A blocked or temporarily failed retrieval keeps its own error code and does not
+trigger audio processing. Stop or accept authorized source text; do not resubmit
+automatically.
 
 Answer follow-ups from saved source/results when sufficient. If the user asks
 for new analysis, use the same link, new `instructions` and a new stable key.
@@ -344,8 +347,9 @@ receipt = client.submit_analysis(
 )
 ```
 
-Omit `transcription` and `force_asr` to keep the request captions-only. Missing
-captions do not authorize a new request; audio is not supported.
+Omit `transcription` and `force_asr`; they do not select a processing mode.
+Enabled audio processing runs automatically when needed, at the same rate on
+every plan. A failed source does not authorize another submission.
 Save the accepted `job_id` receipt before waiting, then follow
 [the same durable job](#submit-once-read-both-outputs) and read its saved outputs.
 One analysis saves both outputs; do not submit another job just to obtain its

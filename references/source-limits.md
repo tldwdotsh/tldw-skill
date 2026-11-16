@@ -1,7 +1,8 @@
 # Source coverage
 
-- YouTube uses usable saved source or available captions; fresh audio
-  transcription is not supported, so missing source/captions fail.
+- YouTube reuses usable saved source or available captions first. Where audio
+  processing is enabled, missing usable captions trigger original-audio
+  transcription automatically on every plan, at 1 credit per source minute.
   Private, members-only, age-restricted, removed or region-restricted media may
   be unavailable. Live streams must end before processing.
 - A public X URL defaults to `scope:auto`: one attached video, the complete
@@ -23,19 +24,26 @@
   generated summary.
 - Failure or cancellation releases a job's hold. Previously completed saved
   sources remain readable without a new charge.
-- `CAPTIONS_UNAVAILABLE` means no accessible captions or usable saved source were
-  found. The failed job releases its hold without a processing-credit charge.
+- `CAPTIONS_UNAVAILABLE` means available processing could not read the source
+  (for example, captions are absent while audio processing is disabled).
+  The failed job releases its hold without a processing-credit charge.
   Stop or accept authorized source text; do not resubmit automatically. A blocked
   or temporarily failed retrieval keeps its own error code and does not establish
-  that captions are absent.
+  that captions are absent or trigger audio processing.
 
-Read live account limits with `account_usage`. Free uses captions, text and
-saved transcripts.
+Read live account limits and enabled audio platforms with `account_usage`.
+Free and paid plans use the same automatic processing policy where enabled.
 Hobby is the paid launch offer; existing Pro accounts keep their plan eligibility.
 Source-duration, concurrent-job, request-attempt, provider-budget and X video
 search limits can still prevent work. Follow the returned error rather than
 creating replacement accounts, rotating keys to evade limits or repeatedly
 resubmitting.
+
+For X, manual captions are preferred. When audio processing is enabled, the
+server may use original audio instead of automatic captions whose validated
+language tag differs from the post's text-language tag. This is an uncertainty
+heuristic: the post language does not prove the video's spoken language or that
+captions are wrong. Output language instructions do not become ASR language hints.
 
 ## YouTube discovery metadata
 

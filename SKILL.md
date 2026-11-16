@@ -3,7 +3,7 @@ name: tldw
 description: Analyze user-supplied YouTube or public X links and supplied text with tldw.sh, then retrieve the saved summary and original transcript. Use for source-grounded summaries, custom questions, transcript retrieval and finding videos on a topic.
 license: MIT
 metadata:
-  version: "0.3.5"
+  version: "0.3.6"
 ---
 
 # tldw.sh
@@ -68,9 +68,11 @@ saved-source/history reads; do not claim a local cache exists.
    remain unknown. The initial reservation may use the plan's maximum duration,
    bounded by the job ceiling and available credits; the worker reprices it from
    the actual source. Honor the user's ceiling even when an estimate is higher.
-   Requests use saved source or captions; fresh audio is not supported. A
-   missing-captions failure does not authorize a retry; follow the recovery
-   rules below.
+   Requests reuse saved source or captions first. Where audio processing is
+   enabled, missing usable captions trigger automatic original-audio
+   transcription on every plan at the same 1 credit per source minute.
+   Legacy controls cannot disable or force that server-owned flow. A source
+   failure does not authorize another submission; follow the recovery rules below.
 3. Follow `wait_job` or `get_job` on that same ID (REST: `GET /v1/jobs/{id}/wait`
    or `GET /v1/jobs/{id}`), honoring `next_poll_after_ms`
    and `Retry-After`. `queued_for_slot` is not terminal. A client timeout does not
@@ -164,8 +166,8 @@ Search results are candidates. Before submitting any analysis:
 5. For fast-moving topics, prefer recent videos. Weigh views against the size of
    the channel or account; views alone are not quality.
 6. Mix sources when both have good candidates.
-7. Compare known caption-rate estimates with the budget before submitting;
-   unknown estimates stay unknown. The default cannot start fresh audio.
+7. Compare known processing estimates with the budget before submitting;
+   unknown estimates stay unknown. Enabled audio processing has the same rate.
    For each sequential job, cap at its rounded-up known estimate or the
    remaining authorized budget, whichever is smaller. Use an authorized per-job
    ceiling when the estimate is unknown; never invent a duration or raise the
@@ -177,7 +179,7 @@ and why in one line, and what you skipped.
 ## Costs and source coverage
 
 <!-- generated:tldw-costs -->
-tldw.sh uses usable saved source or available captions; fresh audio transcription is not supported. Omit `transcription` and `force_asr`: legacy values are accepted for compatibility and do not enable audio. `CAPTIONS_UNAVAILABLE` means no usable saved source or accessible captions were found. The failed job releases its hold without a processing-credit charge. Stop or accept authorized source text; do not resubmit automatically. Blocked or temporary retrieval failures retain their own error codes. Check `account_usage` and honor the user's authorized credit ceiling.
+tldw.sh reuses usable saved source or accessible captions first. When audio processing is enabled for the source platform, missing usable captions trigger automatic original-audio transcription on every plan at the same 1 credit per source minute. Read live `account_usage` availability and limits. Omit `transcription` and `force_asr`: legacy values are ignored, including `transcription=never`; they cannot disable or force audio. `CAPTIONS_UNAVAILABLE` means the source could not be read with the available processing capabilities. The failed job releases its hold without a processing-credit charge. Stop or accept authorized source text; do not resubmit automatically. Blocked or temporary retrieval failures retain their own error codes and do not trigger audio transcription. Honor the user's authorized credit ceiling.
 
 The standard processing rate is 1 credit per source minute. Text uses the live catalog's configured reading rate. Polling, identical idempotent replays and reading saved results do not add processing charges. Read job.credits for estimates, reservations and the final charge.
 
@@ -185,7 +187,7 @@ Reading saved results is free. A new analysis is free only when the live account
 
 Agents never change plans or buy anything. When a plan limit blocks work, show `details.upgrade.billing_url` to the account owner; do not open checkout or resubmit automatically.
 
-Visual analysis, audio transcription, dubbing and translated video or subtitle files are not supported.
+Visual analysis, dubbing and translated video or subtitle files are not supported.
 <!-- /generated:tldw-costs -->
 
 ## Three single-link prompts
@@ -195,7 +197,7 @@ Use a prompt when it matches the user's request. Each starts one analysis.
 <!-- generated:tldw-prompts -->
 - **YouTube research brief** — MCP prompt `youtube_brief`, tool `analyze_media`.
   Instructions: Main argument and three useful takeaways. Cite the minute for each.
-  Cost: 1 credit per caption minute. A 20-minute talk is 20 credits. Reading the saved result again is free.
+  Cost: 1 credit per source minute. A 20-minute talk is 20 credits. Reading the saved result again is free.
 
 - **Summary and transcript** — MCP prompt `summary_and_transcript`, tool `analyze_media`.
   Instructions: Summarize this video, then retrieve its original transcript.
@@ -203,7 +205,7 @@ Use a prompt when it matches the user's request. Each starts one analysis.
 
 - **Claims and evidence** — MCP prompt `claims_and_evidence`, tool `analyze_media`.
   Instructions: List practical claims, the evidence, and the caveats. Flag anything supported by one example.
-  Cost: Same caption rate: 1 credit per caption minute. Captions or a saved transcript are required; missing captions fail without a processing-credit charge. Fresh audio transcription is unavailable.
+  Cost: 1 credit per source minute. Captions or a saved transcript are used first; where audio processing is enabled, missing usable captions trigger automatic audio transcription on every plan at the same rate.
 <!-- /generated:tldw-prompts -->
 
 The MCP resource `tldw://guide` describes the live connection and account policy.

@@ -2,16 +2,16 @@
   "entry": "SKILL.md",
   "files": {
     "LICENSE": "66c5c642314847f06544018eb8224259f5eabf17ed2a5c04c4f28e7f1f684821",
-    "SKILL.md": "bdb3febc92da8b268f8e280a1657f002fb2e7c6fbea2cf6fd59fb550e7f3e2c8",
+    "SKILL.md": "7f8f5f1c2ff3145f0b721bce1e6fd8bdc7798383e93ae35099291886431738f7",
     "agents/openai.yaml": "1c0dbc071528d5df197b67962263b53fe6dd6289f976717ca4cfe6cb898ce114",
-    "references/errors.md": "b4636efe44c7f68a94c836f439802f358f1af970e6a1d7d38b4298d39c14bfdc",
+    "references/errors.md": "0369b7e3ec6ed3fb1b57c857185f0b27f8ec3a335b99b660b27261c37f221a42",
     "references/setup.md": "1a65a42297967df161e2f5170692d8b640834a2e13698ad836eb66b87e051de6",
-    "references/source-limits.md": "3559c21d62cd015ddda0027594a240420dc29ccfe9ff88406d5ab4102eec78ea",
-    "references/tools.md": "0a11ca9a997a756b394686f05d68c19498602a017fdc9cf9fbb0728ff02fc578",
-    "references/workflows.md": "a6e22fff0c1072ae354d853ea1099a4385781b7a42a559831e16e9d6ed5614c2"
+    "references/source-limits.md": "3379a734f1d0185e09fb8e6f6866bbeb56c6501d3e69f4147e6ff717ec2a558e",
+    "references/tools.md": "c038693a322d203f620828260215c643f72a44f859e25d64b7afff2aefcd68b5",
+    "references/workflows.md": "491f81dc1830c391db992e9bac1e9430d7f86bfe714baca31eae5c052ac47b6e"
   },
   "license": "MIT",
   "name": "tldw",
   "schema_version": 1,
-  "version": "0.3.5"
+  "version": "0.3.6"
 }

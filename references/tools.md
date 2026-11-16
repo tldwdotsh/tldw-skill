@@ -40,10 +40,13 @@ one of the plan's monthly searches, and the count resets each billing period;
 left. Check `video.over_plan_limit`, then pass a chosen result's `url` to
 `analyze_media`.
 
-Omit `transcription` and `force_asr`: legacy values are accepted for compatibility
-but do not enable audio. Fresh audio transcription is not supported on any plan.
+Omit `transcription` and `force_asr`: legacy values are ignored, including
+`transcription=never`; they cannot disable or force audio. Where the source
+platform has audio processing enabled, missing usable captions trigger automatic
+original-audio transcription on every plan at 1 credit per source minute.
 A user-authorized `max_credits` bounds spending without granting plan features or
 bypassing source restrictions. `CAPTIONS_UNAVAILABLE` releases the failed job's
 hold without a processing-credit charge; stop or accept authorized source text,
-and do not resubmit automatically.
+and do not resubmit automatically. Live account availability and source limits
+still apply; provider or retrieval failures do not authorize replacement work.
 Do not infer privileges from an account name, role or credential prefix.
