@@ -1,7 +1,7 @@
 {
   "automatic_registry_publication": false,
   "canonical_directory": "packages/agent-skill/tldw",
-  "canonical_source_commit": "30a0ffe8a3106d31d46499be768672d90064251f",
+  "canonical_source_commit": "6624f5e934c897619b36e1a0687b12c835b39fa4",
   "canonical_source_snapshot_sha256": "bcfbe34091a5ad08f11d2a4fa07b1c0cf9ba15bf545f7492404431f56653eb50",
   "export_files": {
     ".gitignore": "427249912cc347340b2cff8e7a6c6daae0077b16be21d8c7306752386c4a0186",
