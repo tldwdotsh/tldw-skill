@@ -27,12 +27,35 @@ its own result projection and bounded response limits:
 | MCP tool | REST |
 | --- | --- |
 | `account_usage` | `GET /v1/me` |
+| `public_config` | `GET /v1/public/config` |
+| `public_security` | `GET /v1/public/security` |
+| `billing_catalog` | `GET /v1/billing/catalog` |
 | `search_videos` | `POST /v1/searches` |
 | `analyze_media` | `POST /v1/analyses` |
-| `wait_job` | `GET /v1/jobs/{job_id}/wait?wait_seconds=8` (0 to 10; a timeout keeps the job running) |
+| `wait_job` | `GET /v1/jobs/{job_id}/wait?wait_seconds=8` (0 to 10, including fractions; optional `include_result=true`; timeout keeps the job running) |
 | `get_job` | `GET /v1/jobs/{job_id}` |
+| `list_jobs` | `GET /v1/jobs` |
+| `cancel_job` | `POST /v1/jobs/{job_id}/cancel` |
 | `get_summary` | `GET /v1/summaries/{summary_id}` |
 | `get_transcript` | `GET /v1/summaries/{summary_id}/transcript/page?offset=0&limit=100`; follow `next_offset` |
+| `list_transcripts` | `GET /v1/transcripts`; preserve filters and `next_cursor` |
+| `get_saved_transcript` | `GET /v1/transcripts/{transcript_id}/page`, or `/metadata` with `mode=metadata` |
+| `mark_transcript_read` | `PATCH /v1/transcripts/{transcript_id}/read` |
+
+Use the three public metadata reads only when needed for setup or a specific
+question. Their MCP tools use the authenticated connection without additional
+scopes; direct REST reads are anonymous. SDK 0.2.14 adds
+`getPublicConfig` / `get_public_config`, `getPublicSecurity` /
+`get_public_security` and `getBillingCatalog` / `get_billing_catalog`.
+An explicitly public-only SDK client (`publicOnly: true` in JavaScript,
+`public_only=True` in Python) sends no account credential and permits only those
+three GETs. Use an authenticated client for processing and account reads.
+Catalog prices and checkout availability are metadata, not purchase actions.
+Keep `account_usage` as the first check before new processing.
+Default SDK constructors still require a credential. For MCP `wait_job`,
+`include_result` defaults to false; true requests inline completed output and
+also requires `summaries:read`. Transcript-library cursors accept up to 1,024
+characters; preserve the returned cursor and filters rather than inventing one.
 
 Known search duration gives a caption-rate estimate, not a final quote or proof
 that captions are available. Always send `max_credits` within the authorized

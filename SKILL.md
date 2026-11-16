@@ -3,7 +3,7 @@ name: tldw
 description: Analyze user-supplied YouTube or public X links and supplied text with tldw.sh, then retrieve the saved summary and original transcript. Use for source-grounded summaries, custom questions, transcript retrieval and finding videos on a topic.
 license: MIT
 metadata:
-  version: "0.3.4"
+  version: "0.3.5"
 ---
 
 # tldw.sh
@@ -11,6 +11,12 @@ metadata:
 Use an existing tldw MCP connection when available. The service processes media;
 this skill does not run a local video processor or need a model-provider key.
 For connection setup, read [references/setup.md](references/setup.md).
+
+Use `public_config`, `public_security` or `billing_catalog` only when setup or a
+question needs public service, activation-policy or catalog facts. These tools
+require no additional scope within an authenticated MCP connection and cannot
+make purchases or reveal an account's balance. Before processing, still call
+`account_usage` for the connected account's actual credits and limits.
 
 ## Work from the user's request
 

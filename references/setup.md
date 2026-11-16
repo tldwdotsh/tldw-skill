@@ -6,6 +6,13 @@ owner signs in through the client's browser flow, reviews scopes and the
 callback, and explicitly approves consent. Never automate consent or one-time
 human verification.
 
+When setup needs service identity, activation-policy or catalog facts, the
+connected MCP tools `public_config`, `public_security` and `billing_catalog`
+provide read-only metadata without additional scopes. The same REST routes
+`/v1/public/config`, `/v1/public/security` and `/v1/billing/catalog` can be read
+without a key, including through SDK 0.2.14's explicit public-only client. A
+public-only client cannot submit jobs or read private account/source data.
+
 For clients with a remote-MCP command:
 
 ```sh

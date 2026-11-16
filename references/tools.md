@@ -1,13 +1,22 @@
 # Customer tools
 
-Call `account_usage` before submitting. The server exposes these 12 customer
+Call `account_usage` before submitting. The server exposes these 15 customer
 tools and three prompts. `tldw://guide` is the live read-only connection guide.
 Client-specific prefixes do not change a tool's name or required scope.
+
+The public metadata tools `public_config`, `public_security` and `billing_catalog`
+are optional setup reads. They need an authenticated MCP connection but no
+additional account scope. They report public service/activation/catalog facts,
+not an account's balance or enrollment state, and never start checkout or change
+billing. Direct REST reads of the same three public routes need no credential.
 
 <!-- generated:tldw-tools -->
 | Tool | Scope | Use |
 | --- | --- | --- |
 | `account_usage` | `account:read` | Read current plan, credits, rates and source/concurrency/search limits before submitting. |
+| `public_config` | No additional scope | Read public service identity, policy/contact information and enabled feature flags when needed for setup. |
+| `public_security` | No additional scope | Read the current public Free allowance and activation-policy facts when needed for setup. |
+| `billing_catalog` | No additional scope | Read public plans, processing rates, text conversion and current limits; this never starts or changes a purchase. |
 | `analyze_media` | `jobs:write` | Submit one authorized source with instructions and a stable idempotency key. |
 | `get_job` | `jobs:read` | Read the same durable job and its polling guidance. |
 | `wait_job` | `jobs:read` | Wait on the same job; a client timeout does not cancel it. |
